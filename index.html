@@ -642,7 +642,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-15 14:43:36" itemprop="dateModified" datetime="2019-04-15T14:43:36+08:00">2019-04-15</time>
+                <time title="Modified: 2019-04-16 11:21:42" itemprop="dateModified" datetime="2019-04-16T11:21:42+08:00">2019-04-16</time>
               
             
           </span>
@@ -678,22 +678,29 @@
       
         
           
-            <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="最小配置"><a href="#最小配置" class="headerlink" title="最小配置"></a>最小配置</h3><h4 id="use-name-amp-user-email"><a href="#use-name-amp-user-email" class="headerlink" title="use.name &amp; user.email"></a>use.name &amp; user.email</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global use.name &apos;ibepo&apos;</span><br><span class="line">git config --global use.email &apos;kefanbufan@163.com&apos;</span><br></pre></td></tr></table></figure>
+            <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="最小配置"><a href="#最小配置" class="headerlink" title="最小配置"></a>最小配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global use.name &apos;ibepo&apos;</span><br><span class="line">git config --global use.email &apos;kefanbufan@163.com&apos;</span><br></pre></td></tr></table></figure>
 <h4 id="config作用域"><a href="#config作用域" class="headerlink" title="config作用域"></a>config作用域</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --local #只对当前仓库有效</span><br><span class="line">git config --global #对当前用户所有仓库有效</span><br><span class="line">git confif --system #对系统所有登录的用户有效</span><br></pre></td></tr></table></figure>
-<h4 id="显示config的配置"><a href="#显示config的配置" class="headerlink" title="显示config的配置"></a>显示config的配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br><span class="line">git config -l #简写</span><br></pre></td></tr></table></figure>
-<h3 id="建立Git仓库"><a href="#建立Git仓库" class="headerlink" title="建立Git仓库"></a>建立Git仓库</h3><h4 id="把已有的项目代码纳入git管理"><a href="#把已有的项目代码纳入git管理" class="headerlink" title="把已有的项目代码纳入git管理"></a>把已有的项目代码纳入git管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 项目所在文件夹</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
-<h4 id="新建的项目直接用git管理"><a href="#新建的项目直接用git管理" class="headerlink" title="新建的项目直接用git管理"></a>新建的项目直接用git管理</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd 某个文件夹</span><br><span class="line">git init your_project #创建名为 your_projcet的文件夹 并Git初始化</span><br><span class="line">cd your_project</span><br></pre></td></tr></table></figure>
-<h3 id="本地仓库操作"><a href="#本地仓库操作" class="headerlink" title="本地仓库操作"></a>本地仓库操作</h3><h4 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-<h4 id="将文件添加到暂存区"><a href="#将文件添加到暂存区" class="headerlink" title="将文件添加到暂存区"></a>将文件添加到暂存区</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add index.html image #添加某文件和某个文件夹</span><br><span class="line">git add -u #一次性提交所有已被git管理的文件到暂存区 update</span><br><span class="line">git add . #添加所有的文件</span><br></pre></td></tr></table></figure>
-<h4 id="提交到历史版本"><a href="#提交到历史版本" class="headerlink" title="提交到历史版本"></a>提交到历史版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m +描述</span><br></pre></td></tr></table></figure>
-<h4 id="版本记录"><a href="#版本记录" class="headerlink" title="版本记录"></a>版本记录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line"></span><br><span class="line">git log -p</span><br><span class="line"></span><br><span class="line">git log --oneline</span><br></pre></td></tr></table></figure>
-<h4 id="版本跳转"><a href="#版本跳转" class="headerlink" title="版本跳转"></a>版本跳转</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名</span><br><span class="line"></span><br><span class="line">git checkout -版本号前七位</span><br><span class="line"></span><br><span class="line">git checkout tag</span><br></pre></td></tr></table></figure>
-<h3 id="标签-tag"><a href="#标签-tag" class="headerlink" title="标签 tag"></a>标签 tag</h3><h4 id="打标签"><a href="#打标签" class="headerlink" title="打标签"></a>打标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a 标签名 - m 描述 哈希值前7位</span><br></pre></td></tr></table></figure>
-<h4 id="列出所有描述"><a href="#列出所有描述" class="headerlink" title="列出所有描述"></a>列出所有描述</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-<h4 id="创建分支并跳转到新分支"><a href="#创建分支并跳转到新分支" class="headerlink" title="创建分支并跳转到新分支"></a>创建分支并跳转到新分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 分支名</span><br></pre></td></tr></table></figure>
-<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br></pre></td></tr></table></figure>
-<h3 id="远程仓库操作"><a href="#远程仓库操作" class="headerlink" title="远程仓库操作"></a>远程仓库操作</h3><h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote url</span><br></pre></td></tr></table></figure>
+<h4 id="列出config"><a href="#列出config" class="headerlink" title="列出config"></a>列出config</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br><span class="line">git config -l #简写</span><br></pre></td></tr></table></figure>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="已存在文件夹的git初始化"><a href="#已存在文件夹的git初始化" class="headerlink" title="已存在文件夹的git初始化"></a>已存在文件夹的git初始化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 项目所在文件夹</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h4 id="git创建并直接初始化"><a href="#git创建并直接初始化" class="headerlink" title="git创建并直接初始化"></a>git创建并直接初始化</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd 某个文件夹</span><br><span class="line">git init your_project #创建名为 your_projcet的文件夹 并Git初始化</span><br><span class="line">cd your_project</span><br></pre></td></tr></table></figure>
+<h4 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><h4 id="add"><a href="#add" class="headerlink" title="add"></a>add</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add index.html image #添加某文件和某个文件夹</span><br><span class="line">git add -u #一次性提交所有已被git管理的文件到暂存区 update</span><br><span class="line">git add . #添加所有的文件</span><br></pre></td></tr></table></figure>
+<h4 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m '我是描述' #写描述存入暂存区</span><br><span class="line">git commit -am '我是描述' #不经过暂存区 直接生成commit</span><br></pre></td></tr></table></figure>
+<h4 id="log"><a href="#log" class="headerlink" title="log"></a>log</h4><p>查看提交状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">git log -p</span><br><span class="line">git log --oneline  #简洁观看</span><br><span class="line">git log -n4 #只需要最近的4次</span><br><span class="line">git log --oneline -n4 --all --graph #小综合+图形化</span><br><span class="line">git help --web log #通过浏览器查看git help 关于log方面的api</span><br></pre></td></tr></table></figure>
+<h4 id="文件重命名"><a href="#文件重命名" class="headerlink" title="文件重命名"></a>文件重命名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mv oldname newname #多行表示</span><br><span class="line">git add newname</span><br><span class="line">git rm oldname</span><br><span class="line">git mv oldname newname #一行表示</span><br></pre></td></tr></table></figure>
+<h4 id="危险的清空"><a href="#危险的清空" class="headerlink" title="危险的清空"></a>危险的清空</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+<h3 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h3><h4 id="打里程碑"><a href="#打里程碑" class="headerlink" title="打里程碑"></a>打里程碑</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a 标签名 - m 描述 哈希值前7位</span><br></pre></td></tr></table></figure>
+<h4 id="列出所有里程碑"><a href="#列出所有里程碑" class="headerlink" title="列出所有里程碑"></a>列出所有里程碑</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch #创建分支</span><br></pre></td></tr></table></figure>
+<h3 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h3><h4 id="创建分支并跳转到新分支"><a href="#创建分支并跳转到新分支" class="headerlink" title="创建分支并跳转到新分支"></a>创建分支并跳转到新分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branchname #基于分支名跳转</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout tag #基于tag跳转</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b newbranch basebranc(9f9838399d9)</span><br><span class="line"><span class="meta">#</span>基于basebranch 创建新分支 newbranch 并跳转到newbrach </span><br><span class="line"><span class="meta">#</span>还可以基于某个commit创建新分支,并跳转到新分支</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout fe393939</span><br><span class="line"><span class="meta">#</span>基于某个commit的哈希跳转,这个时候HEAD指向了这个commit,并没有指向某个分支</span><br><span class="line"><span class="meta">#</span> 这种操作会产生分离头指针,相当于在尝试性变更,temp暂存的意思,切换到别的分支就会消失,相当于工作在一个没有分支的情况下(detached Head)</span><br><span class="line"><span class="meta">#</span>分离头指针产生的commit 切记要和某个分支帮到一起</span><br></pre></td></tr></table></figure>
+<h4 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git branch #查看本地分支； </span><br><span class="line">git branch -r #查看远程分支； </span><br><span class="line">git branch -a# 查看本地和远程分支； </span><br><span class="line">git branch -v #查看本地分支信息； </span><br><span class="line">git branch -vv #查看更多本地分支信息； </span><br><span class="line">git branch -av #查看所有分支信息； </span><br><span class="line"></span><br><span class="line">git branch -d branchName #删除本地分支； </span><br><span class="line">git branch -d -r branchName #删除远程分支； </span><br><span class="line">git branch -D branchName #强制删除branchName分支； </span><br><span class="line"></span><br><span class="line">git branch -m oldbranch newbranch #重命名分支； </span><br><span class="line">git branch -M oldbranch newbranch #强制重命名分支（如果newbranch分支已存在，那么采用-M强制重命名为newbranch）</span><br></pre></td></tr></table></figure>
+<h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git diff fe3434343 fe88889 #比较两个commit之间的差异 </span><br><span class="line">git diff HEAD HEAD^ #用HEAD指带当前分支 HEAD^指代父亲分支</span><br><span class="line">git diff HEAD HEAD^^^</span><br><span class="line">git diff HEAD HEAD~3 #HEAD~3 指代父亲的父亲的父亲</span><br></pre></td></tr></table></figure>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br></pre></td></tr></table></figure>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote url</span><br></pre></td></tr></table></figure>
 <h4 id="列出远程地址"><a href="#列出远程地址" class="headerlink" title="列出远程地址"></a>列出远程地址</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v #origin 是远程仓库的默认别名</span><br></pre></td></tr></table></figure>
 <h4 id="推送远程分支"><a href="#推送远程分支" class="headerlink" title="推送远程分支"></a>推送远程分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u 远程仓库名 分支名</span><br></pre></td></tr></table></figure>
 <h4 id="克隆远程分支"><a href="#克隆远程分支" class="headerlink" title="克隆远程分支"></a>克隆远程分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone url 文件别名</span><br></pre></td></tr></table></figure>
@@ -843,7 +850,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-15 10:25:28" itemprop="dateModified" datetime="2019-04-15T10:25:28+08:00">2019-04-15</time>
+                <time title="Modified: 2019-04-16 08:50:24" itemprop="dateModified" datetime="2019-04-16T08:50:24+08:00">2019-04-16</time>
               
             
           </span>
@@ -911,6 +918,7 @@
 <li><a href="http://blog.poetries.top/FE-Interview-Questions/" target="_blank" rel="noopener">前端面试题整理</a></li>
 <li><a href="https://www.w3cplus.com/vue/vue-directives-and-how-to-custom-directive.html" target="_blank" rel="noopener">大漠老师的vue指令总结</a></li>
 <li><a href="https://www.yuque.com/cssconf/5th/hyku3f" target="_blank" rel="noopener">第五届css大会-css图形生成艺术</a></li>
+<li><a href="https://www.w3cplus.com/css/flex-item-calculate.html" target="_blank" rel="noopener">flex布局的算法 大漠老师</a></li>
 </ul>
 <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ul>
 <li><a href="http://naltatis.github.io/jade-syntax-docs/" target="_blank" rel="noopener">jade JavaScript官方文档</a></li>
@@ -1012,7 +1020,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/css/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/flex布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ibepo">
@@ -1032,7 +1040,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/08/css/" class="post-title-link" itemprop="url">css</a>
+                <a href="/2019/04/08/flex布局/" class="post-title-link" itemprop="url">css</a>
               
             
           </h1>
@@ -1074,7 +1082,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-09 11:27:44" itemprop="dateModified" datetime="2019-04-09T11:27:44+08:00">2019-04-09</time>
+                <time title="Modified: 2019-04-16 14:21:01" itemprop="dateModified" datetime="2019-04-16T14:21:01+08:00">2019-04-16</time>
               
             
           </span>
@@ -1109,18 +1117,56 @@
 
       
         
-          <h2 id="CSS属性总结"><a href="#CSS属性总结" class="headerlink" title="CSS属性总结"></a>CSS属性总结</h2><blockquote>
-<p>这篇文章主要总结下css2.1 和 css3+ 的一些常用属性<br>解决前端面子问题</p>
+          
+            <h1 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h1><h2 id="flex属性"><a href="#flex属性" class="headerlink" title="flex属性"></a>flex属性</h2><blockquote>
+<p>Flexbox布局的最大特性就是让Flex项目可伸缩，也就是让Flex项目的宽度和高度可以自动填充Flex容器剩余的空间或者缩小Flex项目适配Flex容器不足的宽度。</p>
+<p><code>flex:flex-grow flex-shrink flex-basis</code></p>
 </blockquote>
-          <!--noindex-->
+<p>在Flexbox中，<code>flex</code>属性是<code>flex-grow</code>（扩展比率）、<code>flex-shrink</code>（收缩比率）和<code>flex-basis</code>（伸缩基准）三个属性的简称。这三个属性可以控制一个Flex项目（也有人称为Flex元素），主要表现在以下几个方面：</p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a><code>flex-basis</code></h3><ul>
+<li><h4 id="width"><a href="#width" class="headerlink" title="width"></a>width</h4><ul>
+<li>auto 元素根据自身的内容决定宽度</li>
+<li>min-content 元素固有的最小宽度(内容),是有字符串最长的单次决定的大小,中文就是一个汉字</li>
+<li>max-content 元素固有的最大宽度(内容),他会竟可能的大,没有自动换行的机会,如果flex太窄,它就会溢出自身的盒子</li>
+<li><a href="https://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/" target="_blank" rel="noopener">理解CSS3 max/min-content及fit-content等width值</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="flex-basis-1"><a href="#flex-basis-1" class="headerlink" title="flex-basis"></a><code>flex-basis</code></h5><ul>
+<li><p><code>flex-basis:auto</code></p>
+<ul>
+<li><p>flex项目设置了绝对值width,按照绝对值计算,flex-basis=width:tada:</p>
+</li>
+<li><p>flex项目没有设置绝对值,受<code>min-content</code>和<code>max-content</code>的影响,flex-basisi=max-content,宽度等于是有内容决定</p>
+</li>
+</ul>
+</li>
+<li><code>flex-basis:百分比</code>:tada:<ul>
+<li>如果flex容器显式的给出了宽度,会根据flex容器的width计算</li>
+</ul>
+</li>
+<li><code>flex-basis:0</code>:tada:<ul>
+<li>忽略flex项目的尺寸,自己的大小完全交给flex容器,flex容器的所有空间都可以按照比例进行分配</li>
+</ul>
+</li>
+<li><a href="https://codepen.io/airen/full/aQLYKB/" target="_blank" rel="noopener">flex-basisi取值不同的各种情况展示</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="有关于flex-basis属性相关的运用简单的小结一下："><a href="#有关于flex-basis属性相关的运用简单的小结一下：" class="headerlink" title="有关于flex-basis属性相关的运用简单的小结一下："></a>有关于<code>flex-basis</code>属性相关的运用简单的小结一下：</h5><ul>
+<li><code>flex-basis</code>默认值为<code>auto</code></li>
+<li>如果Flex项目显式的设置了<code>width</code>值，同时<code>flex-basis</code>为<code>auto</code>时，则Flex项目的宽度为按<code>width</code>来计算，如果未显式设置<code>width</code>，则按Flex项目的内容宽度来计算</li>
+<li>如果Flex项目显式的设置了<code>width</code>值，同时显式设置了<code>flex-basis</code>的具体值，则Flex项目会忽略<code>width</code>值，会按<code>flex-basis</code>来计算Flex项目</li>
+<li>当Flex容器剩余空间不足时，Flex项目的实际宽度并不会按<code>flex-basis</code>来计算，会根据<code>flex-grow</code>和<code>flex-shrink</code>设置的值给Flex项目分配相应的空间</li>
+<li>对于Flexbox布局中，<u>不建议显式的设置Flex项目的<code>width</code>值</u>，而是通过<code>flex-basis</code>来控制Flex项目的宽度，这样更具弹性</li>
+<li>如果Flex项目显式的设置了<code>min-width</code>或<code>max-width</code>值时，当<code>flex-basis</code>计算出来的值小于<code>min-width</code>则按<code>min-width</code>值设置Flex项目宽度，反之，计算出来的值大于<code>max-width</code>值时，则按<code>max-width</code>的值设置Flex项目宽度</li>
+</ul>
+</li>
+</ul>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/08/css/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -1225,7 +1271,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
