@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="SpringIOC 组件注册 控制反转 将bean对象交给spring容器进行管理 反射—创建对象 解析xml demo4j 工厂模式  xml方式 默认用无参构造创造函数  有参数创造函数,可以在bean的配置文件里边配置bean相关的属性,这时候拿到的就是带相关属性的bean 1&amp;lt;context:compoment_scan base-package:容器中的service和dao 还有">
+<meta name="keywords" content="spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重学Spring">
+<meta property="og:url" content="http://yoursite.com/2019/04/24/重学Spring/index.html">
+<meta property="og:site_name" content="看山不是山">
+<meta property="og:description" content="SpringIOC 组件注册 控制反转 将bean对象交给spring容器进行管理 反射—创建对象 解析xml demo4j 工厂模式  xml方式 默认用无参构造创造函数  有参数创造函数,可以在bean的配置文件里边配置bean相关的属性,这时候拿到的就是带相关属性的bean 1&amp;lt;context:compoment_scan base-package:容器中的service和dao 还有">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-26T06:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重学Spring">
+<meta name="twitter:description" content="SpringIOC 组件注册 控制反转 将bean对象交给spring容器进行管理 反射—创建对象 解析xml demo4j 工厂模式  xml方式 默认用无参构造创造函数  有参数创造函数,可以在bean的配置文件里边配置bean相关的属性,这时候拿到的就是带相关属性的bean 1&amp;lt;context:compoment_scan base-package:容器中的service和dao 还有">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/04/24/重学Spring/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>重学Spring | 看山不是山</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">看山不是山</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+      
+    
+
+    <a href="/" rel="section">Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section">Archives<span class="badge">11</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/24/重学Spring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ibepo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="看山不是山">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">重学Spring
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-24 09:26:03" itemprop="dateCreated datePublished" datetime="2019-04-24T09:26:03+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-26 14:59:40" itemprop="dateModified" datetime="2019-04-26T14:59:40+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><h3 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h3><blockquote>
+<p>组件注册</p>
+<p>控制反转 将bean对象交给spring容器进行管理</p>
+<p>反射—创建对象 解析xml demo4j 工厂模式</p>
+</blockquote>
+<h4 id="xml方式"><a href="#xml方式" class="headerlink" title="xml方式"></a>xml方式</h4><ul>
+<li><p>默认用无参构造创造函数</p>
+</li>
+<li><p>有参数创造函数,可以在bean的配置文件里边配置bean相关的属性,这时候拿到的就是带相关属性的bean</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:compoment_scan</span> <span class="attr">base-package:</span>容器中的<span class="attr">service</span>和<span class="attr">dao</span> 还有<span class="attr">control</span>"&gt;</span><span class="tag">&lt;/<span class="name">context:compoment_scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h4>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"me.simas.controller"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MvcConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.addViewControllers(registry);</span><br><span class="line">        registry.addViewController(<span class="string">"/test"</span>).setViewName(<span class="string">"login"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"alias"</span>)</span><br><span class="line">    <span class="comment">//给容器注册一个bean,id默认是方法名</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IOCTestBean <span class="title">iocTestBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> IOCTestBean();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="comment">//通过某种方式排除注解</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"me.simas"</span>,excludeFilters=&#123;</span><br><span class="line">  <span class="meta">@Filter</span>(type=FilterType.ANNOTATION,<span class="class"><span class="keyword">class</span></span>=&#123;Controller.class&#125;) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给容器中注册组件</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>.包扫描+组件标注注解(<span class="meta">@controller</span> <span class="meta">@service</span> <span class="meta">@Repository</span> <span class="meta">@Component</span>)</span><br><span class="line">  <span class="meta">@ComponentScan</span>(<span class="string">"me.simas.controller"</span>)</span><br><span class="line">  TypeFilter接口做排除和筛选</span><br><span class="line">  </span><br><span class="line"><span class="number">2</span>.<span class="meta">@Bean</span> (导入第三方包,且做相关的属性配置的组件)</span><br><span class="line">  Condition 接口做排除和筛选</span><br><span class="line">	</span><br><span class="line"><span class="number">3</span>.<span class="meta">@Import</span>(快速给容器导入一个组件 相当于无参构造器方式 标注到config类上)</span><br><span class="line">	<span class="meta">@Import</span>(&#123;TestImportBean.class, TestImportBean2.class&#125;)</span><br><span class="line">	importSelector接口 做排除和筛选</span><br></pre></td></tr></table></figure>
+<h3 id="DI"><a href="#DI" class="headerlink" title="DI"></a>DI</h3><blockquote>
+<p>依赖注入</p>
+</blockquote>
+<h4 id="注解方式-1"><a href="#注解方式-1" class="headerlink" title="注解方式"></a>注解方式</h4><ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传入配置类的类型</span></span><br><span class="line">       ApplicationContext applicationContext = <span class="keyword">new</span> AnnotationConfigApplicationContext(MvcConfig.class);</span><br><span class="line"> </span><br><span class="line">       <span class="comment">//通过类型找到bean</span></span><br><span class="line">       IOCTestBean iocTestBean = applicationContext.getBean(IOCTestBean.class);</span><br><span class="line">       iocTestBean.setAge(<span class="string">"1"</span>);</span><br><span class="line">       iocTestBean.setName(<span class="string">"王华华"</span>);</span><br><span class="line">       System.out.print(iocTestBean.toString());</span><br><span class="line"> </span><br><span class="line">       <span class="comment">//通过注册类中的方法名找到bean</span></span><br><span class="line"> </span><br><span class="line">       IOCTestBean iocTestBean1 = (IOCTestBean)      applicationContext.getBean(<span class="string">"iocTestBean"</span>); </span><br><span class="line">       iocTestBean1.setName(<span class="string">"赵媛媛"</span>);</span><br><span class="line">       iocTestBean1.setAge(<span class="string">"234"</span>);</span><br><span class="line">       System.out.print(iocTestBean1.toString());</span><br></pre></td></tr></table></figure>
+<pre><code>// 如果@bean注解上有vaule有名字,则用这个名字查找
+IOCTestBean iocTestBean2 = (IOCTestBean) applicationContext.getBean(&quot;alias&quot;);
+iocTestBean2.setName(&quot;李栓蛋&quot;);
+iocTestBean2.setAge(&quot;234&quot;);
+System.out.print(iocTestBean2.toString());
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- set方式:在需要依赖的类里边 必须有set方法</span><br><span class="line"></span><br><span class="line">- 构造方法方式</span><br><span class="line"></span><br><span class="line">- 注解方式</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>### </p>
+<ul>
+<li><p><code>@Resrouce(name=&quot;alias&quot;)</code>,默认搜索相同别名的bean,jdk 1.6才有此注解</p>
+</li>
+<li><p><code>@Autowrited</code>,默认是按照类型搜索bean@Autowritd @Qualigter(“alias”)`可以通过这种方式 使用别名查找</p>
+</li>
+</ul>
+<h3 id="spring依赖"><a href="#spring依赖" class="headerlink" title="spring依赖"></a>spring依赖</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">spring-core</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">spring-context</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">spring-orm</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">spring-aop</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">aspectjrt</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">cglib</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">aspectjrt</span></span><br></pre></td></tr></table></figure>
+<h3 id="xml文件"><a href="#xml文件" class="headerlink" title="xml文件"></a>xml文件</h3><p>spring.xml</p>
+<p>如果传入全限定路径名(me.simas.testbean) <strong>绝对用的是反射的技术</strong></p>
+<p>将需要管理的bean放入spring xml的配置文件,定义id,通过以下方法拿到相应的类,注意bean的<strong>作用域</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassPathXmlApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring.xml"</span> );</span><br><span class="line">TestBean testbean=(TestBean) context.getBean(<span class="string">"testbeanid"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="scope"><a href="#scope" class="headerlink" title="@scope"></a>@scope</h3><ul>
+<li>prototype 多实例,ioc容器启动并不会调用方法创建对象放在容器中</li>
+<li>singleton 单例的(默认),ioc容器会在启动是调用方法创建对象,放在ioc容器中</li>
+<li>request  同一次请求创建你一个实例</li>
+<li>session 同一个session创建一个实例</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@scope(&quot;prototype&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h3><p>按照一定条件进行判断.给满足条件的容器注册bean</p>
+<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><h4 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h4><p>代理(proxy)是一种设计模式,提供了目标对象的访问方式,即通过代理访问目标对象. </p>
+<p>好处:可以在目标对象实现的基础上,增强额外的功能(扩展目标对象的功能)</p>
+<ul>
+<li>静态模式<ul>
+<li>需要生成代理类</li>
+</ul>
+</li>
+<li>动态模式<ul>
+<li>jdk代理 反射模式</li>
+<li>cglib 字节码</li>
+</ul>
+</li>
+</ul>
+<h4 id="aop应用场景"><a href="#aop应用场景" class="headerlink" title="aop应用场景"></a>aop应用场景</h4><pre><code>-  权限控制 事务管理 日志打印 性能统计
+-  什么地方使用aop,代码重复,在不同的方法中,但是常常做形同的操作
+</code></pre><h4 id="3方面"><a href="#3方面" class="headerlink" title="3方面"></a>3方面</h4><p><strong>关注点</strong>:重复的代码</p>
+<p><strong>切面</strong>: 抽取重复代码</p>
+<p><strong>切入点</strong>:挂载哪些方法</p>
+<h4 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h4><h5 id="注解方式-2"><a href="#注解方式-2" class="headerlink" title="注解方式"></a>注解方式</h5><ol>
+<li><p>开启事务注解权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoProxy</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">2. 便携切面类</span><br><span class="line">  ```java</span><br><span class="line">  @Aspect</span><br><span class="line">  @Commponet</span><br><span class="line">  public class AopTest()&#123;</span><br><span class="line">    //前置通知</span><br><span class="line">    @Before(&quot;execution(me.simas.test)&quot;)</span><br><span class="line">      public void bean()&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    //后置通知</span><br><span class="line">    @After(&quot;execution(me.simas.test)&quot;)</span><br><span class="line">      public void bean()&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    //运行通知</span><br><span class="line">    @AfterReturning(&quot;execution(me.simas.test)&quot;)</span><br><span class="line">      public void bean()&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">     //异常通知</span><br><span class="line">    @AfterThrowing(&quot;execution(me.simas.test)&quot;)</span><br><span class="line">      public void bean()&#123;</span><br><span class="line">  </span><br><span class="line">      &#125;</span><br><span class="line">    </span><br><span class="line">     //环绕通知</span><br><span class="line">    @Around(&quot;execution(me.simas.test)&quot;)</span><br><span class="line">      public void bean()&#123;</span><br><span class="line">  </span><br><span class="line">      &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="xml方式-1"><a href="#xml方式-1" class="headerlink" title="xml方式"></a>xml方式</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">"loggerCutpoint"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">expression</span>=</span></span><br><span class="line"><span class="tag">            "<span class="attr">execution</span>(* <span class="attr">com.how2java.service.ProductService.</span>*(<span class="attr">..</span>)) "/&gt;</span></span><br><span class="line">             </span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">id</span>=<span class="string">"logAspect"</span> <span class="attr">ref</span>=<span class="string">"loggerAspect"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">aop:after</span> <span class="attr">pointcut-ref</span>=<span class="string">"loggerCutpoint"</span> <span class="attr">method</span>=<span class="string">"log"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个配置过程是什么含义呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&lt;aop:pointcut id=&quot;loggerCutpoint&quot; expression=&quot;execution(* com.how2java.service.ProductService.*(..)) &quot;/&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>这一句是声明切入点，切入点的 id 叫 loggerCutPoint ，用来标记这个切入点，</p>
+<p>这个expression表示：满足expression中的方法调用之后，就会去进行切面操作，类似于触发了切面：</p>
+<p>第一个 <em> 代表返回任意类型<br>com.how2java.service.ProductService.</em>     表示包名以 com.how2java.service.ProductService 开头的类的任意方法（第二个*表示任意方法，通配符肯定知道吧）<br>(..) 表示方法的参数是任意数量和类型</p>
+<p>简单说就是，只要com.how2java.service这个包中的ProductService类的任意一个函数被调用，不管你的返回值是什么，都会触发开关，我就会去执行切面，也就是辅助功能，但是辅助功能是什么呢，就是下面两句：</p>
+<p>&lt;aop:aspect id=”logAspect” ref=”loggerAspect”&gt;</p>
+<p>　　&lt;aop:after pointcut-ref=”loggerCutpoint” method=”log”/&gt;</p>
+<p>&lt;/aop:aspect&gt;&gt;</p>
+<p>这两句是定义了一个切面，上面说只要触发开关，就会去执行切面，就是指的这里的切面，所谓切面，就是一个类中的方法而已，搞的这个高大上。。。</p>
+<p>id代表这个切面的名字，ref就是指的方法所在的类，method代表的就是方法的名字，</p>
+<p>pointcut-ref=”loggerCutpoint” 这个就是表示我这个切面是和上面的切点关联起来的（一个切点是可以关联多个切面的，一个切面只能关联一个方法），只要上面的切点被触发，我就会到这里来执行一些辅助功能，搞得和单片机的中断一样，</p>
+<p>after表示在切入点触发之后来执行我这个中断，当然也有before，一共有五个before，after，After-returning ，After-throwing，Around。</p>
+<p>在 method 参数后面，还可以加上参数列表。</p>
+</blockquote>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h4><p>要么全部成功 要么全部失败 不可再分</p>
+<h4 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h4><p>a 用户5000 转账b用户5000 a=0 a+b=5000</p>
+<h4 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h4><p>多个事务之间互相不影响</p>
+<h4 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h4><h3 id="spring事务"><a href="#spring事务" class="headerlink" title="spring事务"></a>spring事务</h3><p>通过commit两步走 </p>
+<p>通过callback回滚</p>
+<h4 id="手动事务"><a href="#手动事务" class="headerlink" title="手动事务"></a>手动事务</h4><p>​    自己去begin,commit</p>
+<h4 id="声明事务"><a href="#声明事务" class="headerlink" title="声明事务"></a>声明事务</h4><p>​    xml</p>
+<h4 id="注解方式-3"><a href="#注解方式-3" class="headerlink" title="注解方式"></a>注解方式</h4><p>@transation</p>
+<h4 id="事务开始之后一定要释放"><a href="#事务开始之后一定要释放" class="headerlink" title="事务开始之后一定要释放"></a>事务开始之后一定要释放</h4><p>​    提交释放</p>
+<p>​    回滚释放</p>
+<h4 id="声明式事务原理剖析"><a href="#声明式事务原理剖析" class="headerlink" title="声明式事务原理剖析"></a>声明式事务原理剖析</h4><p>AOP编程 环绕通知 在方法之前或方法之后执行</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/23/docker/" rel="next" title="Docker">
+                <i class="fa fa-chevron-left"></i> Docker
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/词汇/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ibepo</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">1.</span> <span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IOC"><span class="nav-number">1.1.</span> <span class="nav-text">IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#xml方式"><span class="nav-number">1.1.1.</span> <span class="nav-text">xml方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解方式"><span class="nav-number">1.1.2.</span> <span class="nav-text">注解方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DI"><span class="nav-number">1.2.</span> <span class="nav-text">DI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注解方式-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">注解方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring依赖"><span class="nav-number">1.3.</span> <span class="nav-text">spring依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xml文件"><span class="nav-number">1.4.</span> <span class="nav-text">xml文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scope"><span class="nav-number">1.5.</span> <span class="nav-text">@scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditional"><span class="nav-number">1.6.</span> <span class="nav-text">@Conditional</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">1.7.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代理模式"><span class="nav-number">1.7.1.</span> <span class="nav-text">代理模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#aop应用场景"><span class="nav-number">1.7.2.</span> <span class="nav-text">aop应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3方面"><span class="nav-number">1.7.3.</span> <span class="nav-text">3方面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式"><span class="nav-number">1.7.4.</span> <span class="nav-text">方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注解方式-2"><span class="nav-number">1.7.4.1.</span> <span class="nav-text">注解方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xml方式-1"><span class="nav-number">1.7.4.2.</span> <span class="nav-text">xml方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">1.8.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原子性"><span class="nav-number">1.8.1.</span> <span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一致性"><span class="nav-number">1.8.2.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隔离性"><span class="nav-number">1.8.3.</span> <span class="nav-text">隔离性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#持久性"><span class="nav-number">1.8.4.</span> <span class="nav-text">持久性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring事务"><span class="nav-number">1.9.</span> <span class="nav-text">spring事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#手动事务"><span class="nav-number">1.9.1.</span> <span class="nav-text">手动事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#声明事务"><span class="nav-number">1.9.2.</span> <span class="nav-text">声明事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解方式-3"><span class="nav-number">1.9.3.</span> <span class="nav-text">注解方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务开始之后一定要释放"><span class="nav-number">1.9.4.</span> <span class="nav-text">事务开始之后一定要释放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#声明式事务原理剖析"><span class="nav-number">1.9.5.</span> <span class="nav-text">声明式事务原理剖析</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ibepo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

@@ -98,7 +98,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="看山不是山">
-<meta property="og:url" content="http://yoursite.com/tags/摘抄/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="看山不是山">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/摘抄/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
@@ -120,7 +120,7 @@
   };
 </script>
 
-  <title>Tag: 摘抄 | 看山不是山</title>
+  <title>看山不是山</title>
   
 
 
@@ -168,7 +168,8 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,69 +266,218 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
 
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>摘抄<small>Tag</small>
-        </h1>
-      </div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/flex布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ibepo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="看山不是山">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/08/flex布局/" class="post-title-link" itemprop="url">css</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-08 16:54:59" itemprop="dateCreated datePublished" datetime="2019-04-08T16:54:59+08:00">2019-04-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-16 14:21:01" itemprop="dateModified" datetime="2019-04-16T14:21:01+08:00">2019-04-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
 
       
         
+          
+            <h1 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h1><h2 id="flex属性"><a href="#flex属性" class="headerlink" title="flex属性"></a>flex属性</h2><blockquote>
+<p>Flexbox布局的最大特性就是让Flex项目可伸缩，也就是让Flex项目的宽度和高度可以自动填充Flex容器剩余的空间或者缩小Flex项目适配Flex容器不足的宽度。</p>
+<p><code>flex:flex-grow flex-shrink flex-basis</code></p>
+</blockquote>
+<p>在Flexbox中，<code>flex</code>属性是<code>flex-grow</code>（扩展比率）、<code>flex-shrink</code>（收缩比率）和<code>flex-basis</code>（伸缩基准）三个属性的简称。这三个属性可以控制一个Flex项目（也有人称为Flex元素），主要表现在以下几个方面：</p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a><code>flex-basis</code></h3><ul>
+<li><h4 id="width"><a href="#width" class="headerlink" title="width"></a>width</h4><ul>
+<li>auto 元素根据自身的内容决定宽度</li>
+<li>min-content 元素固有的最小宽度(内容),是有字符串最长的单次决定的大小,中文就是一个汉字</li>
+<li>max-content 元素固有的最大宽度(内容),他会竟可能的大,没有自动换行的机会,如果flex太窄,它就会溢出自身的盒子</li>
+<li><a href="https://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/" target="_blank" rel="noopener">理解CSS3 max/min-content及fit-content等width值</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="flex-basis-1"><a href="#flex-basis-1" class="headerlink" title="flex-basis"></a><code>flex-basis</code></h5><ul>
+<li><p><code>flex-basis:auto</code></p>
+<ul>
+<li><p>flex项目设置了绝对值width,按照绝对值计算,flex-basis=width:tada:</p>
+</li>
+<li><p>flex项目没有设置绝对值,受<code>min-content</code>和<code>max-content</code>的影响,flex-basisi=max-content,宽度等于是有内容决定</p>
+</li>
+</ul>
+</li>
+<li><code>flex-basis:百分比</code>:tada:<ul>
+<li>如果flex容器显式的给出了宽度,会根据flex容器的width计算</li>
+</ul>
+</li>
+<li><code>flex-basis:0</code>:tada:<ul>
+<li>忽略flex项目的尺寸,自己的大小完全交给flex容器,flex容器的所有空间都可以按照比例进行分配</li>
+</ul>
+</li>
+<li><a href="https://codepen.io/airen/full/aQLYKB/" target="_blank" rel="noopener">flex-basisi取值不同的各种情况展示</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="有关于flex-basis属性相关的运用简单的小结一下："><a href="#有关于flex-basis属性相关的运用简单的小结一下：" class="headerlink" title="有关于flex-basis属性相关的运用简单的小结一下："></a>有关于<code>flex-basis</code>属性相关的运用简单的小结一下：</h5><ul>
+<li><code>flex-basis</code>默认值为<code>auto</code></li>
+<li>如果Flex项目显式的设置了<code>width</code>值，同时<code>flex-basis</code>为<code>auto</code>时，则Flex项目的宽度为按<code>width</code>来计算，如果未显式设置<code>width</code>，则按Flex项目的内容宽度来计算</li>
+<li>如果Flex项目显式的设置了<code>width</code>值，同时显式设置了<code>flex-basis</code>的具体值，则Flex项目会忽略<code>width</code>值，会按<code>flex-basis</code>来计算Flex项目</li>
+<li>当Flex容器剩余空间不足时，Flex项目的实际宽度并不会按<code>flex-basis</code>来计算，会根据<code>flex-grow</code>和<code>flex-shrink</code>设置的值给Flex项目分配相应的空间</li>
+<li>对于Flexbox布局中，<u>不建议显式的设置Flex项目的<code>width</code>值</u>，而是通过<code>flex-basis</code>来控制Flex项目的宽度，这样更具弹性</li>
+<li>如果Flex项目显式的设置了<code>min-width</code>或<code>max-width</code>值时，当<code>flex-basis</code>计算出来的值小于<code>min-width</code>则按<code>min-width</code>值设置Flex项目宽度，反之，计算出来的值大于<code>max-width</code>值时，则按<code>max-width</code>的值设置Flex项目宽度</li>
+</ul>
+</li>
+</ul>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+          
         
-          <a class="post-title-link" href="/2019/04/15/好文摘抄/" itemprop="url">
-            
-              <span itemprop="name">好文摘抄</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-15T14:20:43+08:00" content="2019-04-15">
-          04-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
   
   
   
+  </article>
+
+
+    
+  </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
